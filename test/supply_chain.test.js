@@ -1,7 +1,7 @@
 let BN = web3.utils.BN;
 let SupplyChain = artifacts.require("SupplyChain");
 let { catchRevert } = require("./exceptionsHelpers.js");
-const { items: ItemStruct, isDefined, isPayable, isType } = require("./ast-helper");
+const { items: ItemStruct, isDefined, isPayable, isType, getType } = require("./ast-helper");
 
 contract("SupplyChain", function (accounts) {
   const [_owner, alice, bob] = accounts;
@@ -116,7 +116,7 @@ contract("SupplyChain", function (accounts) {
         );
         assert(
           isType(subjectStruct)("state")("State"), 
-          "`state` should be of type `State`"
+          "`state` should be of type `uint`"
         );
       });
 
